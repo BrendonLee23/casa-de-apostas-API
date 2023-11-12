@@ -1,5 +1,4 @@
 import prisma from "./../database";
-import { News } from "@prisma/client";
 
 export type CreateNewsData = Omit<News, "id" | "createAt">;
 export type AlterNewsData = CreateNewsData;
