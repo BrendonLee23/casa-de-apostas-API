@@ -15,6 +15,14 @@ export default function errorHandlingMiddleware(error: Error | AppError, req: Re
     return res.status(httpStatus.CONFLICT).send("Conflict")
   }
 
+  if (error.name === "UnauthorizedError") {
+    return res.status(httpStatus.UNAUTHORIZED).send("UnauthorizedError")
+  }
+
+  if (error.name === "BadRequestError") {
+    return res.status(httpStatus.BAD_REQUEST).send("BadRequestError")
+  }
+
   console.log(error);
   return res.status(httpStatus.INTERNAL_SERVER_ERROR);
 }
