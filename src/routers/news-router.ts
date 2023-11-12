@@ -1,7 +1,7 @@
 import Router from "express";
 
 import * as newsController from "./../controllers/news-controller";
-import { validateSchemaMiddleware } from "../middlewares/schema-handler";
+import { validateSchemaMiddleware } from "../middlewares/validate-middleware";
 import { newsSchema } from "../schemas/news-schema";
 
 const newsRouter = Router();

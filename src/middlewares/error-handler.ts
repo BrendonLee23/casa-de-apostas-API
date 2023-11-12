@@ -23,6 +23,10 @@ export default function errorHandlingMiddleware(error: Error | AppError, req: Re
     return res.status(httpStatus.BAD_REQUEST).send("BadRequestError")
   }
 
+  if (error.name === "UnprocessableEntityError") {
+    return res.status(httpStatus.UNPROCESSABLE_ENTITY).send("UnprocessableEntityError")
+  }
+
   console.log(error);
   return res.status(httpStatus.INTERNAL_SERVER_ERROR);
 }
