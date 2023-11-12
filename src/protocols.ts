@@ -6,8 +6,8 @@ export type ApplicationError = {
     };
 
 
-export type CreateParticipant = Omit<Participant, "id" | "createAt" | "updateAt">;
+export type CreateParticipant = Omit<Participant, "id" | "createdAt" | "updatedAt">;
 
-export type CreateGame = Omit<Game, "id" | "createAt" | "updateAt" | "homeTeamScore" | "awayTeamScore" | "isFinished">;
+export type CreateGame = Omit<Game, "id" | "createdAt" | "updatedAt" | "homeTeamScore" | "awayTeamScore" | "isFinished">;
 
-export type CreateBet = Omit<Bet, "id" | "createAt" | "updateAt" | "status" | "amountWon">;
+export type CreateBet = Omit<Bet, "id" | "createdAt" | "updatedAt" | "status" | "amountWon">;
