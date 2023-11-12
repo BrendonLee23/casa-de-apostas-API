@@ -12,7 +12,24 @@ export function createParticipants(participantBody: CreateParticipant){
     return result;
 }
 
+export async function findParticipant( id: number ){
+    return await prisma.participant.findUnique({
+        where: { id: id },
+    });
+}
+
+export async function updateParticipantBalanceById(id: number, participantBalance: number, amountBet: number){
+    return await prisma.participant.update({
+        where: { id: id },
+        data: {
+            balance: participantBalance - amountBet,
+        },
+    });
+}
+
 export const participantRepository = {
     getAllParticipants,
     createParticipants,
+    findParticipant,
+    updateParticipantBalanceById
     };

@@ -7,24 +7,28 @@ type AppError = Error & {
 }
 
 export default function errorHandlingMiddleware(error: Error | AppError, req: Request, res: Response, next: NextFunction) {
-  if (error.name === "NotFound") {
+  if (error.name === "NotFoundError") {
     return res.status(httpStatus.NOT_FOUND).send("NotFound")
   }
 
-  if (error.name === "Conflict") {
+  if (error.name === "ConflictError") {
     return res.status(httpStatus.CONFLICT).send("Conflict")
   }
 
   if (error.name === "UnauthorizedError") {
-    return res.status(httpStatus.UNAUTHORIZED).send("UnauthorizedError")
+    return res.status(httpStatus.UNAUTHORIZED).send("Unauthorized")
   }
 
   if (error.name === "BadRequestError") {
-    return res.status(httpStatus.BAD_REQUEST).send("BadRequestError")
+    return res.status(httpStatus.BAD_REQUEST).send("BadRequest")
   }
 
   if (error.name === "UnprocessableEntityError") {
-    return res.status(httpStatus.UNPROCESSABLE_ENTITY).send("UnprocessableEntityError")
+    return res.status(httpStatus.UNPROCESSABLE_ENTITY).send("UnprocessableEntity")
+  }
+
+  if (error.name === "PaymentRequiredError") {
+    return res.status(httpStatus.PAYMENT_REQUIRED).send("PaymentRequired")
   }
 
   console.log(error);
