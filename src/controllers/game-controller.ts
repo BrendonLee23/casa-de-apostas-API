@@ -13,3 +13,10 @@ export async function postGames(req: Request, res: Response) {
     const game = await gameService.postGame( gameBody );
     res.status(httpStatus.OK).send(game);
 }
+
+export async function getGameWithBets(req: Request, res: Response){
+    const { id } = req.params;
+    const gameId = parseInt(id);
+    const result = await gameService.getGameWithBetsById(gameId);
+    res.status(httpStatus.OK).send(result);
+}

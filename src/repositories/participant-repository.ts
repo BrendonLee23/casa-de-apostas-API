@@ -1,4 +1,4 @@
-import prisma from "@/database";
+import { prisma } from "@/database";
 import { CreateParticipant } from "@/protocols";
 
 export function getAllParticipants() {

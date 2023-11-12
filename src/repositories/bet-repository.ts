@@ -1,4 +1,4 @@
-import prisma from "@/database";
+import { prisma } from "@/database";
 import { CreateBet } from "@/protocols";
 
 async function createBet( betBody: CreateBet){
@@ -16,6 +16,26 @@ async function createBet( betBody: CreateBet){
     return result;
 }
 
+async function findBetsByGameId(gameId: number){
+    const result = await prisma.bet.findMany({
+        where: { gameId },
+        select: {
+            id: true,
+            createdAt: true,
+            updatedAt: true,
+            homeTeamScore: true,
+            awayTeamScore: true,
+            amountBet: true,
+            gameId: true,
+            participantId: true,
+            status: true,
+            amountWon: true,
+        },
+    });
+    return result;
+}
+
 export const betRepository = {
-    createBet
+    createBet,
+    findBetsByGameId
     };

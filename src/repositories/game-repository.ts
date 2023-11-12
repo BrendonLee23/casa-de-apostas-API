@@ -1,8 +1,15 @@
-import prisma from "@/database";
+import { prisma } from "@/database";
 import { CreateGame } from "@/protocols";
 
 async function findGames(){
     return await prisma.game.findMany()
+}
+
+async function findGameById( gameId: number ){
+    const game = await prisma.game.findUnique({
+        where: { id: gameId },
+    });
+    return game;
 }
 
 async function createGame(gameBody: CreateGame) {
@@ -19,5 +26,6 @@ async function createGame(gameBody: CreateGame) {
 
 export const gameRepository = {
     findGames,
-    createGame
+    createGame,
+    findGameById
     };
