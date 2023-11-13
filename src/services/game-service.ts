@@ -1,4 +1,3 @@
-import { prisma } from "@/database";
 import { notFoundError } from "@/errors/not-found-error";
 import { CreateGame } from "@/protocols";
 import { betRepository } from "@/repositories/bet-repository";
