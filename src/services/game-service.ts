@@ -22,7 +22,6 @@ async function getGameWithBetsById(gameId: number) {
     if (!bets) {
         throw notFoundError();
     }
-    console.log(bets)
     // Combinar informações do jogo e apostas
     const gameWithBets = {
         ...game,

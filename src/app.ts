@@ -5,6 +5,9 @@ import errorHandlingMiddleware from "./middlewares/error-handler";
 import participantRouter from "./routers/participant-router";
 import gameRouter from "./routers/game-router";
 import betRouter from "./routers/bet-router";
+import { loadEnv } from "./config/envs";
+
+loadEnv();
 
 const app = express();
 app.use(json());

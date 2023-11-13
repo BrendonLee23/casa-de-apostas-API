@@ -1,7 +1,7 @@
 
 import supertest from "supertest";
-import app from "../src/app";
-import prisma from "../src/database";
+import app from "../../src/app";
+import prisma from "../../src/database";
 
 const api = supertest(app);
 
