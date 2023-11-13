@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "npm i && tsc && npx tsc-alias",
     "prepare": "husky install",
     "start": "node dist/src/server.js",
     "migration:run": "prisma migrate deploy",
