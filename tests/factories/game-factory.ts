@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import prisma from 'desafio-tecnico-API/src/database';
+import prisma from '../../src/database';
 
 export async function createGame(homeTeamName: string, awayTeamName: string) {
     return await prisma.game.create({

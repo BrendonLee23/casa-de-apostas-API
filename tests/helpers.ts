@@ -1,4 +1,4 @@
-import prisma from "desafio-tecnico-API/src/database";
+import prisma from "../src/database";
 
 
 export async function cleanDb() {

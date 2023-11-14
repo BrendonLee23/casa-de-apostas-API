@@ -1,4 +1,4 @@
-import { loadEnv } from "desafio-tecnico-API/src/config/envs";
+import { loadEnv } from "../src/config/envs";
 
 
 loadEnv();

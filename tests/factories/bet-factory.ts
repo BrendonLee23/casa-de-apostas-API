@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import prisma from 'desafio-tecnico-API/src/database';
-import { CreateBet } from 'desafio-tecnico-API/src/protocols';
+import prisma from '../../src/database';
+import { CreateBet } from '../../src/protocols';
 
 
 

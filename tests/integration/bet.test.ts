@@ -1,7 +1,7 @@
 
 import supertest from "supertest";
 import { cleanDb } from "../helpers";
-import app from "desafio-tecnico-API/src/app";
+import app from "../../src/app";
 
 beforeEach(async () => {
     await cleanDb();
