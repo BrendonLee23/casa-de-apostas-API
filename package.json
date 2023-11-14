@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "prebuild": "rimraf -G dist",
     "build": "tsc",
     "prepare": "husky install",
     "start": "node dist/src/server.js",
@@ -40,6 +39,7 @@
     "jest": "^29.7.0",
     "nodemon": "^3.0.1",
     "prisma": "^5.5.2",
+    "rimraf": "^5.0.5",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
