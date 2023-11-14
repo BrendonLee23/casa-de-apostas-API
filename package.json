@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npm i && tsc && npx tsc-alias",
+    "build": "tsc",
     "prepare": "husky install",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "migration:run": "prisma migrate deploy",
     "migration:generate": "npm run dev:load-envs prisma migrate dev",
     "lint": "eslint .",
