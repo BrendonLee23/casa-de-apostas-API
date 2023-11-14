@@ -4,7 +4,8 @@ import { cleanDb } from "../helpers";
 import { createParticipant } from "../factories/participant-factory";
 import { faker } from "@faker-js/faker";
 import httpStatus from "http-status";
-import app from "@/app";
+import app from "desafio-tecnico-API/src/app";
+
 
 const server = supertest(app);
 

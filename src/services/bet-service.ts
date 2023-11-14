@@ -1,9 +1,10 @@
-import { notFoundError } from "@/errors/not-found-error";
-import { paymentRequiredError } from "@/errors/payment-required-error";
-import { CreateBet } from "@/protocols";
-import { betRepository } from "@/repositories/bet-repository";
-import { participantRepository } from "@/repositories/participant-repository";
+
 import { Bet } from "@prisma/client";
+import { notFoundError } from "../errors/not-found-error";
+import { paymentRequiredError } from "../errors/payment-required-error";
+import { CreateBet } from "../protocols";
+import { betRepository } from "../repositories/bet-repository";
+import { participantRepository } from "../repositories/participant-repository";
 
 async function postBet(betBody: CreateBet): Promise<Bet> {
     // Obter informações do participante

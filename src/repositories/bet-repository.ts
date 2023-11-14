@@ -1,5 +1,6 @@
-import prisma from "@/database";
-import { CreateBet } from "@/protocols";
+import prisma from "../database";
+import { CreateBet } from "../protocols";
+
 
 async function createBet( betBody: CreateBet){
     const result = await prisma.bet.create({

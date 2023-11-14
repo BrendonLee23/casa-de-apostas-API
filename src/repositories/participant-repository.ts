@@ -1,5 +1,6 @@
-import prisma from "@/database";
-import { CreateParticipant } from "@/protocols";
+import prisma from "../database";
+import { CreateParticipant } from "../protocols";
+
 
 export function getAllParticipants() {
     return prisma.participant.findMany();

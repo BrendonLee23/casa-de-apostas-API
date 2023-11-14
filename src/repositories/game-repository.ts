@@ -1,5 +1,5 @@
-import prisma from "@/database";
-import { CreateGame } from "@/protocols";
+import prisma from "../database";
+import { CreateGame } from "../protocols";
 
 async function findGames(){
     return await prisma.game.findMany()

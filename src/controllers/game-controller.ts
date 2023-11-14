@@ -1,7 +1,8 @@
-import { gameService } from '@/services/game-service';
+
 import { CreateGame } from './../protocols';
 import { Request, Response } from "express";
 import httpStatus from "http-status";
+import { gameService } from '../services/game-service';
 
 export async function getGames(req: Request, res: Response) {
     const games = await gameService.getGames()

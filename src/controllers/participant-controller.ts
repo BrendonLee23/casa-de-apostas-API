@@ -1,7 +1,8 @@
 import { CreateParticipant } from './../protocols';
-import { participantService } from "@/services/participant-service";
+
 import { Request, Response } from "express";
 import httpStatus from "http-status";
+import { participantService } from '../services/participant-service';
 
 export async function getParticipants(req: Request, res: Response) {
     const participants = await participantService.getParticipants()

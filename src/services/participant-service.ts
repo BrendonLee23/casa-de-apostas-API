@@ -1,5 +1,6 @@
-import { CreateParticipant } from "@/protocols";
-import { participantRepository } from "@/repositories/participant-repository";
+import { CreateParticipant } from "../protocols";
+import { participantRepository } from "../repositories/participant-repository";
+
 
 
 async function getParticipants(){

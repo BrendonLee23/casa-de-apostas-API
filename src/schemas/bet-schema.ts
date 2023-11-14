@@ -1,5 +1,6 @@
 import joi from "joi";
-import { CreateBet } from "@/protocols";
+import { CreateBet } from "../protocols";
+
 
 export const betSchema = joi.object<CreateBet>({
     homeTeamScore: joi.number().integer().required(),

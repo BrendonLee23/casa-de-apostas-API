@@ -1,7 +1,8 @@
-import { notFoundError } from "@/errors/not-found-error";
-import { CreateGame } from "@/protocols";
-import { betRepository } from "@/repositories/bet-repository";
-import { gameRepository } from "@/repositories/game-repository";
+import { notFoundError } from "../errors/not-found-error";
+import { CreateGame } from "../protocols";
+import { betRepository } from "../repositories/bet-repository";
+import { gameRepository } from "../repositories/game-repository";
+
 
 async function getGames() {
     return gameRepository.findGames()

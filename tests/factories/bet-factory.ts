@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker';
-import prisma from "@/database";
-import { CreateBet } from '@/protocols';
+import prisma from 'desafio-tecnico-API/src/database';
+import { CreateBet } from 'desafio-tecnico-API/src/protocols';
+
+
 
 export async function createBet( betBody: CreateBet){
     return await prisma.bet.create({
