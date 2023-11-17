@@ -1,9 +1,9 @@
 module.exports = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-  moduleDirectories: ["node_modules", "src"],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  moduleDirectories: ['node_modules', 'src'],
   transform: {
-    ".+\\.ts$": "ts-jest",
+    '.+\\.ts$': 'ts-jest',
   },
-  testMatch: ["<rootDir>/tests/integration/*.(test|spec).ts"],
+  testMatch: ['<rootDir>/tests/integration/*.(test|spec).ts'],
 };

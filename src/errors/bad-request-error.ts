@@ -1,6 +1,4 @@
-import { ApplicationError } from "../protocols";
-
-
+import { ApplicationError } from '../protocols';
 
 export function badRequestError(): ApplicationError {
   return {
@@ -8,4 +6,3 @@ export function badRequestError(): ApplicationError {
     message: 'The request was invalid',
   };
 }
-

@@ -1,7 +1,6 @@
-import { ApplicationError } from "../protocols";
+import { ApplicationError } from '../protocols';
 
-
-export function conflictError(message: string): ApplicationError{
+export function conflictError(): ApplicationError {
   return {
     name: 'ConflictError',
     message: 'Conflict Error in application',

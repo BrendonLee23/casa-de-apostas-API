@@ -1,8 +1,8 @@
-import { ApplicationError } from "../protocols";
+import { ApplicationError } from '../protocols';
 
 export function unprocessableEntityError(): ApplicationError {
-    return {
+  return {
     name: 'UnprocessableEntityError',
     message: 'UnprocessableEntity',
-    };
+  };
 }
