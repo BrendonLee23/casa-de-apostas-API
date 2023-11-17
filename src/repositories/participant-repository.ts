@@ -1,5 +1,5 @@
 import prisma from '../database';
-import { CreateParticipant } from '../protocols';
+import { CreateParticipant, ParticipantBalance } from '../protocols';
 
 export function getAllParticipants() {
   return prisma.participant.findMany();
@@ -12,9 +12,15 @@ export function createParticipants(participantBody: CreateParticipant) {
   return result;
 }
 
-export async function findParticipant(id: number) {
+export async function findParticipantById(id: number) {
   return await prisma.participant.findUnique({
     where: { id: id },
+  });
+}
+
+export async function findParticipantByName(name: string) {
+  return await prisma.participant.findUnique({
+    where: { name: name },
   });
 }
 
@@ -27,9 +33,20 @@ export async function updateParticipantBalanceById(id: number, participantBalanc
   });
 }
 
+export async function updateParticipantBalanceWhenWinning(participant: ParticipantBalance) {
+  return await prisma.participant.update({
+    where: { id: participant.id },
+    data: {
+      balance: participant.balance,
+    },
+  });
+}
+
 export const participantRepository = {
   getAllParticipants,
   createParticipants,
-  findParticipant,
+  findParticipantById,
+  findParticipantByName,
   updateParticipantBalanceById,
+  updateParticipantBalanceWhenWinning,
 };

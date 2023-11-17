@@ -15,12 +15,13 @@ function validate(schema: ObjectSchema, type: 'body' | 'params') {
     const { error } = schema.validate(req[type], {
       abortEarly: false,
     });
-
     if (!error) {
       next();
     } else {
       let errorMessage = '';
       error.details.forEach((d) => (errorMessage += d.message + ' '));
+      console.log(errorMessage);
+      console.log(error);
       throw unprocessableEntityError();
     }
   };

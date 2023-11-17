@@ -14,9 +14,9 @@ model Participant {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String
+  name      String   @unique
   balance   Int // Representado em centavos
-  Bet       Bet?
+  Bet       Bet[]
 }
 
 model Game {
@@ -28,7 +28,7 @@ model Game {
   homeTeamScore Int
   awayTeamScore Int
   isFinished    Boolean
-  Bet           Bet?
+  Bet           Bet[]
 }
 
 model Bet {
@@ -38,8 +38,8 @@ model Bet {
   homeTeamScore Int
   awayTeamScore Int
   amountBet     Int // Representado em centavos
-  gameId        Int         @unique
-  participantId Int         @unique
+  gameId        Int         
+  participantId Int         
   status        String
   amountWon     Int?
   Participant   Participant @relation(fields: [participantId], references: [id])

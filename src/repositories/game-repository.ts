@@ -1,5 +1,5 @@
 import prisma from '../database';
-import { CreateGame } from '../protocols';
+import { CreateGame, CreateBet } from '../protocols';
 
 async function findGames() {
   return await prisma.game.findMany();
@@ -8,6 +8,20 @@ async function findGames() {
 async function findGameById(gameId: number) {
   const game = await prisma.game.findUnique({
     where: { id: gameId },
+  });
+  return game;
+}
+
+async function findGameByIdWithBet(gameId: number) {
+  const game = await prisma.game.findUnique({
+    where: { id: gameId },
+    include: {
+      Bet: {
+        include: {
+          Participant: true,
+        },
+      },
+    },
   });
   return game;
 }
@@ -24,8 +38,22 @@ async function createGame(gameBody: CreateGame) {
   return result;
 }
 
+async function updateScoreboardGameById(gameId: number, finalScore: CreateBet) {
+  const result = await prisma.game.update({
+    where: { id: gameId },
+    data: {
+      homeTeamScore: finalScore.homeTeamScore,
+      awayTeamScore: finalScore.awayTeamScore,
+      isFinished: true,
+    },
+  });
+  return result;
+}
+
 export const gameRepository = {
   findGames,
   createGame,
   findGameById,
+  updateScoreboardGameById,
+  findGameByIdWithBet,
 };

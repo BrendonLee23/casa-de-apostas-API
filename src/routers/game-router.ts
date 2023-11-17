@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import { getGameWithBets, getGames, postGames } from '../controllers/game-controller';
-import { validateBody } from '../middlewares/validate-middleware';
-import { gameSchema } from '../schemas/game-schema';
+import { getGameWithBets, getGames, postGameFinishById, postGames } from '../controllers/game-controller';
+import { validateBody, validateParams } from '../middlewares/validate-middleware';
+import { gameFinishSchema, gameParamsSchema, gameSchema } from '../schemas/game-schema';
 
 const gameRouter = Router();
 
 gameRouter.post('/', validateBody(gameSchema), postGames);
-gameRouter.post('/:id/finish', validateBody(gameSchema));
+gameRouter.post('/:id/finish', validateParams(gameParamsSchema), validateBody(gameFinishSchema), postGameFinishById);
 gameRouter.get('/', getGames);
-gameRouter.get('/:id', getGameWithBets);
+gameRouter.get('/:id', validateParams(gameParamsSchema), getGameWithBets);
 
 export default gameRouter;

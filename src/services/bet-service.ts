@@ -8,7 +8,7 @@ import { participantRepository } from '../repositories/participant-repository';
 async function postBet(betBody: CreateBet): Promise<Bet> {
   // Obter informações do participante
   const id = betBody.participantId;
-  const participant = await participantRepository.findParticipant(id);
+  const participant = await participantRepository.findParticipantById(id);
   if (!participant) {
     throw notFoundError();
   }
