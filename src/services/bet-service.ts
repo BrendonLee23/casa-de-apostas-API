@@ -10,13 +10,13 @@ async function postBet(betBody: CreateBet): Promise<Bet> {
   const id = betBody.participantId;
   const participant = await participantRepository.findParticipantById(id);
   if (!participant) {
-    throw notFoundError();
+    throw notFoundError('Participant not found');
   }
   const amountBet = betBody.amountBet;
   const participantBalance = participant.balance;
   // Verificar se o saldo do participante é suficiente
   if (participantBalance < amountBet) {
-    throw paymentRequiredError();
+    throw paymentRequiredError('Balance must be greater than or equal to amount');
   }
   // Deduzir imediatamente o valor da aposta do saldo do participante
   await participantRepository.updateParticipantBalanceById(id, participantBalance, amountBet);

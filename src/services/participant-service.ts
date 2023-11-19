@@ -10,7 +10,7 @@ async function getParticipants() {
 async function postParticipants(participantBody: CreateParticipant) {
   const name = participantBody.name;
   const participantAlreadyExists = await participantRepository.findParticipantByName(name);
-  if (participantAlreadyExists) throw conflictError();
+  if (participantAlreadyExists) throw conflictError('This name already exists');
   if (participantBody.balance < 1000) throw badRequestError('Minimum value required 1000');
   const result = participantRepository.createParticipants(participantBody);
   return result;
