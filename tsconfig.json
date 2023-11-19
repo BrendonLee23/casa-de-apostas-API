@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "baseUrl": "../", // ou "baseUrl": "./"
+    "baseUrl": ".", // ou "baseUrl": "./"
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]
 }

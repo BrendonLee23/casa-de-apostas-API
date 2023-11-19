@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "prepare": "husky install",
     "start": "node dist/src/server.js",
     "start-ts": "ts-node src/server.ts",
@@ -14,8 +14,8 @@
     "dev:seed": "npm run dev:load-envs prisma db seed",
     "migration:run": "prisma migrate deploy",
     "migration:generate": "npm run dev:load-envs prisma migrate dev",
-    "test": "cross-env NODE_ENV=test jest --passWithNoTests --runInBand --verbose",
-    "test:coverage": "npm run test:load-envs -- jest -- --coverage --runInBand",
+    "test": "dotenv -e .env.test prisma migrate deploy && dotenv -e .env.test jest -- -i",
+    "test:coverage": "npm run test -- --coverage",
     "test:migration:run": "npm run test:load-envs prisma migrate deploy",
     "test:migration:generate": "npm run test:load-envs prisma migrate dev",
     "test:watch": "jest --watch --passWithNoTests --runInBand",
@@ -23,6 +23,9 @@
     "test:seed": "npm run test:load-envs prisma db seed",
     "prisma": "prisma",
     "lint": "eslint ."
+  },
+  "prisma": {
+    "seed": "ts-node pisma/seed.ts"
   },
   "keywords": [],
   "author": "",
