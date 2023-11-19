@@ -3,7 +3,7 @@ import { ApplicationError } from '../protocols';
 
 export function unprocessableEntityError(): ApplicationError {
   return {
-    name: 'UnprocessableEntityError',
+    name: 'unprocessableEntityError',
     message: 'UnprocessableEntity',
     status: httpStatus.UNPROCESSABLE_ENTITY,
   };

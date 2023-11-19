@@ -3,7 +3,7 @@ import { ApplicationError } from '../protocols';
 
 export function paymentRequiredError(): ApplicationError {
   return {
-    name: 'PaymentRequiredError',
+    name: 'paymentRequiredError',
     message: 'Payment Required or insufficient',
     status: httpStatus.PAYMENT_REQUIRED,
   };
