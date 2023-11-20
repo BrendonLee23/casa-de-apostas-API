@@ -16,13 +16,35 @@ async function postBet(betBody: CreateBet): Promise<Bet> {
   if (amountBet <= 0) throw badRequestError('Balance cannot be negative or 0');
   if (participantBalance < amountBet) throw paymentRequiredError('Balance must be greater than or equal to amount');
   const gameId = betBody.gameId;
-  const gameFinished = await gameRepository.findGameById(gameId);
-  if (gameFinished) throw badRequestError('This game has already been finished');
+  const gameNotFinished = await gameRepository.findGameNotFinishedById(gameId);
+  if (!gameNotFinished) throw badRequestError('This game has already been finished');
   await participantRepository.updateParticipantBalanceById(id, participantBalance, amountBet);
   const result = await betRepository.createBet(betBody);
   return result;
 }
 
+// eslint-disable-next-line prettier/prettier
+async function updateBetStatusAndAmount(bet: Bet, totalAmount: number, totalWinningAmount: number, betWinnersList: Bet[]) {
+  if (betWinnersList.includes(bet)) {
+    bet.status = 'WON';
+    const statusBet = bet.status;
+    const amountWon = (bet.amountBet / totalWinningAmount) * totalAmount * (1 - 0.3);
+    bet.amountWon = Math.floor(amountWon);
+    const id = bet.participantId;
+    const participant = await participantRepository.findParticipantById(id);
+    participant.balance += bet.amountWon;
+    await participantRepository.updateParticipantBalanceWhenWinning(participant);
+    await betRepository.updateBet(bet, statusBet, amountWon);
+  } else {
+    bet.status = 'LOST';
+    const statusBet = bet.status;
+    bet.amountWon = 0;
+    const amountWon = bet.amountWon;
+    await betRepository.updateBet(bet, statusBet, amountWon);
+  }
+}
+
 export const betService = {
   postBet,
+  updateBetStatusAndAmount,
 };

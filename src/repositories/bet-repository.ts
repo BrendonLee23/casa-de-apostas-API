@@ -1,7 +1,5 @@
-import { Bet } from '@prisma/client';
 import prisma from '../database';
 import { CreateBet, betBody } from '../protocols';
-import { participantRepository } from './participant-repository';
 
 async function createBet(betBody: CreateBet) {
   const result = await prisma.bet.create({
@@ -36,26 +34,6 @@ async function findBetsByGameId(gameId: number) {
   });
   return result;
 }
-// eslint-disable-next-line prettier/prettier
-async function updateBetStatusAndAmount(bet: Bet, totalAmount: number, totalWinningAmount: number, betWinnersList: Bet[]) {
-  if (betWinnersList.includes(bet)) {
-    bet.status = 'WON';
-    const statusBet = bet.status;
-    const amountWon = (bet.amountBet / totalWinningAmount) * totalAmount * (1 - 0.3);
-    bet.amountWon = Math.floor(amountWon);
-    const id = bet.participantId;
-    const participant = await participantRepository.findParticipantById(id);
-    participant.balance += bet.amountWon;
-    await participantRepository.updateParticipantBalanceWhenWinning(participant);
-    await betRepository.updateBet(bet, statusBet, amountWon);
-  } else {
-    bet.status = 'LOST';
-    const statusBet = bet.status;
-    bet.amountWon = 0;
-    const amountWon = bet.amountWon;
-    await betRepository.updateBet(bet, statusBet, amountWon);
-  }
-}
 
 async function updateBet(bet: betBody, status: string, amountWon: number) {
   const result = await prisma.bet.update({
@@ -71,6 +49,5 @@ async function updateBet(bet: betBody, status: string, amountWon: number) {
 export const betRepository = {
   createBet,
   findBetsByGameId,
-  updateBetStatusAndAmount,
   updateBet,
 };

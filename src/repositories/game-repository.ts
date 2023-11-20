@@ -12,6 +12,13 @@ async function findGameById(gameId: number) {
   return game;
 }
 
+async function findGameNotFinishedById(gameId: number) {
+  const game = await prisma.game.findUnique({
+    where: { id: gameId, isFinished: false },
+  });
+  return game;
+}
+
 async function findGameByIdWithBet(gameId: number) {
   const game = await prisma.game.findUnique({
     where: { id: gameId },
@@ -56,4 +63,5 @@ export const gameRepository = {
   findGameById,
   updateScoreboardGameById,
   findGameByIdWithBet,
+  findGameNotFinishedById,
 };

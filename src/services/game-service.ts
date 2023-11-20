@@ -4,6 +4,7 @@ import { CreateGame, CreateBet } from '../protocols';
 import { betRepository } from '../repositories/bet-repository';
 import { gameRepository } from '../repositories/game-repository';
 import { conflictError } from '../errors/conflict-error';
+import { betService } from './bet-service';
 
 async function getGames() {
   return gameRepository.findGames();
@@ -42,13 +43,12 @@ async function postGameFinishById(gameId: number, finalScore: CreateBet) {
   const totalAmount = bets.reduce((total, b) => total + b.amountBet, 0);
   const betWinnersList: Bet[] = [];
   for (const bet of bets) {
-    const isCorrectBet =
-      bet.homeTeamScore === finalScore.homeTeamScore && bet.awayTeamScore === finalScore.awayTeamScore;
+    const isCorrectBet = bet.homeTeamScore === finalScore.homeTeamScore && bet.awayTeamScore === finalScore.awayTeamScore;
     if (isCorrectBet) betWinnersList.push(bet);
   }
   const totalWinningAmount = betWinnersList.reduce((total, b) => total + b.amountBet, 0);
   for (const bet of bets) {
-    await betRepository.updateBetStatusAndAmount(bet, totalAmount, totalWinningAmount, betWinnersList);
+    await betService.updateBetStatusAndAmount(bet, totalAmount, totalWinningAmount, betWinnersList);
   }
   return gameResult;
 }
