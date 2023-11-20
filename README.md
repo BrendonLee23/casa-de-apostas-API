@@ -24,8 +24,6 @@ Link do Deploy: https://desafio-tecnico-api-7q98.onrender.com
   "balance": 1000
 }
 Game
-json
-Copy code
 {
   "id": 1,
   "createdAt": "2023-09-27T19:22:50.503Z",
@@ -37,8 +35,6 @@ Copy code
   "isFinished": false
 }
 Bet
-json
-Copy code
 {
   "id": 1,
   "createdAt": "2023-09-27T19:22:50.503Z",
@@ -51,6 +47,15 @@ Copy code
   "status": "PENDING",
   "amountWon": null
 }
+# Rotas
+- **POST** `/participants`
+- **POST** `/games`
+- **POST** `/bets`
+- **POST** `/games/:id/finish`
+- **GET** `/participants`
+- **GET** `/games`
+- **GET** `/games/:id`
+
 # Rotas
 - **POST** `/participants`
 - **POST** `/games`
@@ -77,6 +82,8 @@ Copy code
 2. Utilize as rotas especificadas para criar participantes, jogos e apostas.
 3. Observe as respostas e resultados conforme as regras de negócio.
 4. Certifique-se de seguir o contrato da API e as instruções fornecidas.
+
+Boa sorte!
 
 
 
