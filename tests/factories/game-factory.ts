@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { Game } from '@prisma/client';
 import prisma from '../../src/database';
 
 export async function createGame(homeTeamName: string, awayTeamName: string) {
@@ -12,3 +13,8 @@ export async function createGame(homeTeamName: string, awayTeamName: string) {
     },
   });
 }
+
+export const generateValidGame = (params: Partial<Game> = {}) => ({
+  homeTeamName: params.homeTeamName || faker.company.name(),
+  awayTeamName: params.awayTeamName || faker.company.name(),
+});

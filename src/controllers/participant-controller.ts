@@ -11,5 +11,5 @@ export async function getParticipants(req: Request, res: Response) {
 export async function postParticipants(req: Request, res: Response) {
   const participantBody = req.body as CreateParticipant;
   const participants = await participantService.postParticipants(participantBody);
-  res.status(httpStatus.OK).send(participants);
+  res.status(httpStatus.CREATED).send(participants);
 }

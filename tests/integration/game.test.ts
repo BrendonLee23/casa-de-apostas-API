@@ -1,11 +1,35 @@
-/* import supertest from 'supertest';
+import supertest from 'supertest';
+import httpStatus from 'http-status';
+import { generateValidGame } from '../../tests/factories/game-factory';
+import { loadEnv } from '../../src/config/envs';
 import { cleanDb } from '../helpers';
 import app from '../../src/app';
 
-beforeEach(async () => {
+const server = supertest(app);
+
+beforeAll(async () => {
   await cleanDb();
 });
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const server = supertest(app);
- */
+beforeEach(async () => {
+  loadEnv();
+  await cleanDb();
+});
+
+describe('POST /games', () => {
+  it('should create a Game and return status code 200 OK', async () => {
+    const response = generateValidGame();
+    const result = await server.post('/games').send(response);
+    expect(result.status).toBe(httpStatus.OK);
+    expect(result.body).toEqual({
+      id: expect.any(Number),
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
+      homeTeamName: response.homeTeamName,
+      awayTeamName: response.awayTeamName,
+      homeTeamScore: expect.any(Number),
+      awayTeamScore: expect.any(Number),
+      isFinished: expect.any(Boolean),
+    });
+  });
+});
