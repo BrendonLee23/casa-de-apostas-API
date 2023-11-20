@@ -31,7 +31,7 @@ describe('POST /participants', () => {
   });
 
   describe('when body is valid', () => {
-    it('should create a participant and return status code 200 OK', async () => {
+    it('should create a participant and return status code 201 OK', async () => {
       const response = generateValidParticipant();
       const result = await server.post('/participants').send(response);
       expect(result.status).toBe(httpStatus.CREATED);

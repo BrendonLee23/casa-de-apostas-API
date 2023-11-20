@@ -20,8 +20,6 @@ function validate(schema: ObjectSchema, type: 'body' | 'params') {
     } else {
       let errorMessage = '';
       error.details.forEach((d) => (errorMessage += d.message + ' '));
-      console.log(errorMessage);
-      console.log(error);
       throw unprocessableEntityError();
     }
   };

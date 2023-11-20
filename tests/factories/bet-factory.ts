@@ -1,17 +1,33 @@
 import { faker } from '@faker-js/faker';
+import { Bet } from '@prisma/client';
 import prisma from '../../src/database';
-import { CreateBet } from '../../src/protocols';
 
-export async function createBet(betBody: CreateBet) {
-  return await prisma.bet.create({
+export async function createBet(params: Partial<Bet> = {}): Promise<Bet> {
+  return prisma.bet.create({
     data: {
-      homeTeamScore: betBody.homeTeamScore || faker.number.int(),
-      awayTeamScore: betBody.awayTeamScore || faker.number.int(),
-      amountBet: betBody.amountBet || faker.number.int(),
-      gameId: betBody.gameId,
-      participantId: betBody.participantId,
+      homeTeamScore: faker.number.int(99999999),
+      awayTeamScore: faker.number.int(99999999),
+      amountBet: faker.number.int(99999999),
+      gameId: params.gameId || faker.number.int(999999),
+      participantId: params.participantId || faker.number.int(99999999),
       status: 'PENDING', // Aposta é criada como PENDING inicialmente
       amountWon: null, // Valor ganho é nulo quando a aposta é PENDING
     },
   });
 }
+
+export const generateValidBet = (params: Partial<Bet> = {}) => ({
+  homeTeamScore: params.homeTeamScore || faker.number.int(99999999),
+  awayTeamScore: params.homeTeamScore || faker.number.int(99999999),
+  amountBet: params.amountBet || faker.number.int(99999999),
+  gameId: params.gameId || faker.number.int(999),
+  participantId: params.participantId || faker.number.int(999),
+});
+
+export const generateBetWithoutAmont = (params: Partial<Bet> = {}) => ({
+  homeTeamScore: params.homeTeamScore || faker.number.int(99999999),
+  awayTeamScore: params.homeTeamScore || faker.number.int(99999999),
+  amountBet: faker.number.int({ min: -20, max: 0 }),
+  gameId: params.gameId || faker.number.int(999),
+  participantId: params.participantId || faker.number.int(999),
+});

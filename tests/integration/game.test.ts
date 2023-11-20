@@ -17,19 +17,21 @@ beforeEach(async () => {
 });
 
 describe('POST /games', () => {
-  it('should create a Game and return status code 200 OK', async () => {
-    const response = generateValidGame();
-    const result = await server.post('/games').send(response);
-    expect(result.status).toBe(httpStatus.OK);
-    expect(result.body).toEqual({
-      id: expect.any(Number),
-      createdAt: expect.any(String),
-      updatedAt: expect.any(String),
-      homeTeamName: response.homeTeamName,
-      awayTeamName: response.awayTeamName,
-      homeTeamScore: expect.any(Number),
-      awayTeamScore: expect.any(Number),
-      isFinished: expect.any(Boolean),
+  describe('When recieve a body valide', () => {
+    it('should create a Game and return status code 200 OK', async () => {
+      const response = generateValidGame();
+      const result = await server.post('/games').send(response);
+      expect(result.status).toBe(httpStatus.OK);
+      expect(result.body).toEqual({
+        id: expect.any(Number),
+        createdAt: expect.any(String),
+        updatedAt: expect.any(String),
+        homeTeamName: response.homeTeamName,
+        awayTeamName: response.awayTeamName,
+        homeTeamScore: expect.any(Number),
+        awayTeamScore: expect.any(Number),
+        isFinished: expect.any(Boolean),
+      });
     });
   });
 });
