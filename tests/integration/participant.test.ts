@@ -2,11 +2,7 @@ import supertest from 'supertest';
 import httpStatus from 'http-status';
 import { loadEnv } from '../../src/config/envs';
 import { cleanDb } from '../helpers';
-import {
-  createParticipant,
-  generateParticipantWithLowBalance,
-  generateValidParticipant,
-} from '../factories/participant-factory';
+import { createParticipant, generateParticipantWithLowBalance, generateValidParticipant } from '../factories/participant-factory';
 import app from '../../src/app';
 
 const server = supertest(app);
