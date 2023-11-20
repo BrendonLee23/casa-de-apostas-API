@@ -15,7 +15,7 @@ Link do Deploy: https://desafio-tecnico-api-7q98.onrender.com
 ## Entidades
 
 ### Participant
-```json
+
 {
   "id": 1,
   "createdAt": "2023-09-27T19:22:50.503Z",
