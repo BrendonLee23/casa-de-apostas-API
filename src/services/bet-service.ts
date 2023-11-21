@@ -4,7 +4,7 @@ import { paymentRequiredError } from '../errors/payment-required-error';
 import { CreateBet } from '../protocols';
 import { betRepository } from '../repositories/bet-repository';
 import { participantRepository } from '../repositories/participant-repository';
-import { badRequestError } from '../../src/errors/bad-request-error';
+import { badRequestError } from '../errors/bad-request-error';
 import { gameRepository } from './../repositories/game-repository';
 
 async function postBet(betBody: CreateBet): Promise<Bet> {
