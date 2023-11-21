@@ -19,7 +19,7 @@ export async function findParticipantById(id: number) {
 }
 
 export async function findParticipantByName(name: string) {
-  return await prisma.participant.findUnique({
+  return await prisma.participant.findFirst({
     where: { name: name },
   });
 }
