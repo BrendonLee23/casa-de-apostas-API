@@ -9,8 +9,8 @@ async function createBet(betBody: CreateBet) {
       amountBet: betBody.amountBet,
       gameId: betBody.gameId,
       participantId: betBody.participantId,
-      status: 'PENDING', // Aposta é criada como PENDING inicialmente
-      amountWon: null, // Valor ganho é nulo quando a aposta é PENDING
+      status: 'PENDING',
+      amountWon: null,
     },
   });
   return result;

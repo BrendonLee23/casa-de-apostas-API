@@ -23,7 +23,6 @@ async function postBet(betBody: CreateBet): Promise<Bet> {
   return result;
 }
 
-// eslint-disable-next-line prettier/prettier
 async function updateBetStatusAndAmount(bet: Bet, totalAmount: number, totalWinningAmount: number, betWinnersList: Bet[]) {
   if (betWinnersList.includes(bet)) {
     bet.status = 'WON';

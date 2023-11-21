@@ -8,15 +8,9 @@ export type ApplicationError = {
 
 export type CreateParticipant = Omit<Participant, 'id' | 'createdAt' | 'updatedAt'>;
 
-export type CreateGame = Omit<
-  Game,
-  'id' | 'createdAt' | 'updatedAt' | 'homeTeamScore' | 'awayTeamScore' | 'isFinished'
->;
+export type CreateGame = Omit<Game, 'id' | 'createdAt' | 'updatedAt' | 'homeTeamScore' | 'awayTeamScore' | 'isFinished'>;
 
-export type CreateGameFinish = Omit<
-  Game,
-  'id' | 'createdAt' | 'updatedAt' | 'homeTeamName' | 'awayTeamName' | 'isFinished'
->;
+export type CreateGameFinish = Omit<Game, 'id' | 'createdAt' | 'updatedAt' | 'homeTeamName' | 'awayTeamName' | 'isFinished'>;
 
 export type CreateBet = Omit<Bet, 'id' | 'createdAt' | 'updatedAt' | 'status' | 'amountWon'>;
 

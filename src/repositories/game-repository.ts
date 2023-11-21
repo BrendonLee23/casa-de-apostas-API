@@ -37,9 +37,9 @@ async function createGame(gameBody: CreateGame) {
   const result = await prisma.game.create({
     data: {
       ...gameBody,
-      homeTeamScore: 0, // Placar inicial 0x0
+      homeTeamScore: 0,
       awayTeamScore: 0,
-      isFinished: false, // Marcado como não finalizado inicialmente
+      isFinished: false,
     },
   });
   return result;

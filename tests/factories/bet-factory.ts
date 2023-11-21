@@ -10,8 +10,8 @@ export async function createBet(params: Partial<Bet> = {}): Promise<Bet> {
       amountBet: faker.number.int(99999999),
       gameId: params.gameId || faker.number.int(999999),
       participantId: params.participantId || faker.number.int(99999999),
-      status: 'PENDING', // Aposta é criada como PENDING inicialmente
-      amountWon: null, // Valor ganho é nulo quando a aposta é PENDING
+      status: 'PENDING',
+      amountWon: null,
     },
   });
 }

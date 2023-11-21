@@ -15,17 +15,14 @@ async function postGame(gameBody: CreateGame) {
 }
 
 async function getGameWithBetsById(gameId: number) {
-  // Buscar informações do jogo
   const game = await gameRepository.findGameById(gameId);
   if (!game) {
     throw notFoundError('Game not found');
   }
-  // Buscar apostas associadas ao jogo
   const bets = await betRepository.findBetsByGameId(gameId);
   if (!bets) {
     throw notFoundError('Bets not found');
   }
-  // Combinar informações do jogo e apostas
   const gameWithBets = {
     ...game,
     bets,

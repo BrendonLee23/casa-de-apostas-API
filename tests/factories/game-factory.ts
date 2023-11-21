@@ -7,9 +7,9 @@ export async function createGame(params: Partial<Game> = {}): Promise<Game> {
     data: {
       homeTeamName: params.homeTeamName || faker.company.name(),
       awayTeamName: params.awayTeamName || faker.company.name(),
-      homeTeamScore: 0, // Placar inicial 0x0
+      homeTeamScore: 0,
       awayTeamScore: 0,
-      isFinished: params.isFinished || false, // Marcado como não finalizado inicialmente
+      isFinished: params.isFinished || false,
     },
   });
 }

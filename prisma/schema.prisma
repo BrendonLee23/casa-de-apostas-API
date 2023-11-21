@@ -15,7 +15,7 @@ model Participant {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String   @unique
-  balance   Int // Representado em centavos
+  balance   Int 
   Bet       Bet[]
 }
 
@@ -37,7 +37,7 @@ model Bet {
   updatedAt     DateTime    @updatedAt
   homeTeamScore Int
   awayTeamScore Int
-  amountBet     Int // Representado em centavos
+  amountBet     Int 
   gameId        Int         
   participantId Int         
   status        String
