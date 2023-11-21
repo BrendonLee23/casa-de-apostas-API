@@ -21,6 +21,7 @@
     "test:watch": "jest --watch --passWithNoTests --runInBand",
     "test:load-envs": "dotenv -e .env.test",
     "test:seed": "npm run test:load-envs prisma db seed",
+    "test:report": "dotenv -e .env.test prisma migrate deploy & dotenv -e .env.test jest -- --coverage --runInBand --coverageReporters=json-summary --coverageDirectory=coverage --collectCoverageFrom='**/*.ts'",
     "prisma": "prisma",
     "lint": "eslint ."
   },
