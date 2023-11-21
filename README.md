@@ -1,9 +1,6 @@
-Link do Deploy: https://desafio-tecnico-api-7q98.onrender.com
+## Link do Deploy: https://desafio-tecnico-api-7q98.onrender.com
 
 # Desafio Técnico - Quer Apostar Quanto?
-
-## Deploy
-[Link do Deploy](https://desafio-tecnico-api-7q98.onrender.com)
 
 ## Requisitos Técnicos
 - TypeScript
@@ -14,76 +11,46 @@ Link do Deploy: https://desafio-tecnico-api-7q98.onrender.com
 
 ## Entidades
 
-### Participant
+![image](https://github.com/BrendonLee23/desafio-tecnico-API/assets/104690858/dc37fc5b-9f22-4576-a60b-296f6d4661e0)
 
-{
-  "id": 1,
-  "createdAt": "2023-09-27T19:22:50.503Z",
-  "updatedAt": "2023-09-27T19:22:50.503Z",
-  "name": "João",
-  "balance": 1000
-}
-Game
-{
-  "id": 1,
-  "createdAt": "2023-09-27T19:22:50.503Z",
-  "updatedAt": "2023-09-27T19:22:50.503Z",
-  "homeTeamName": "Flamengo",
-  "awayTeamName": "Fluminense",
-  "homeTeamScore": 3,
-  "awayTeamScore": 1,
-  "isFinished": false
-}
-Bet
-{
-  "id": 1,
-  "createdAt": "2023-09-27T19:22:50.503Z",
-  "updatedAt": "2023-09-27T19:22:50.503Z",
-  "homeTeamScore": 2,
-  "awayTeamScore": 3,
-  "amountBet": 1000,
-  "gameId": 1,
-  "participantId": 1,
-  "status": "PENDING",
-  "amountWon": null
-}
+
 # Rotas
 - **POST** `/participants`
+
+  > entrada da rota:
+
+![image](https://github.com/BrendonLee23/desafio-tecnico-API/assets/104690858/63447b88-ecb2-485c-b2a2-d5a6399aab3d)
+
 - **POST** `/games`
+  
+  > entrada da rota:
+
+![image](https://github.com/BrendonLee23/desafio-tecnico-API/assets/104690858/f6786278-5938-44d3-9e55-a13bbcc2a41f)
+
 - **POST** `/bets`
+
+  > entrada da rota:
+  
+![image](https://github.com/BrendonLee23/desafio-tecnico-API/assets/104690858/ac8503de-8d12-4b6e-9573-6a52a40f9a9b)
+
 - **POST** `/games/:id/finish`
+
+  > entrada da rota:
+
+![image](https://github.com/BrendonLee23/desafio-tecnico-API/assets/104690858/78d29fb9-ab9d-4f8a-b189-00091ef01d52)
+
 - **GET** `/participants`
 - **GET** `/games`
 - **GET** `/games/:id`
 
-# Rotas
-- **POST** `/participants`
-- **POST** `/games`
-- **POST** `/bets`
-- **POST** `/games/:id/finish`
-- **GET** `/participants`
-- **GET** `/games`
-- **GET** `/games/:id`
-
-# Regras de Negócio
-- Participante não pode ter saldo inicial menor que R$ 10,00.
-- Não é possível criar uma aposta com valor maior que o saldo do participante.
-- Não é possível criar uma aposta em um jogo já finalizado.
-- Ao criar uma aposta, o valor deve ser subtraído imediatamente do saldo do participante.
-- Um jogo só pode ser finalizado se ainda não tiver sido encerrado anteriormente.
-- Ao finalizar um jogo, o placar deve ser atualizado.
-- Ao finalizar um jogo, todas as apostas devem ser atualizadas conforme as regras especificadas.
-- O valor ganho em uma aposta segue uma fórmula específica com taxa da casa.
-- A taxa da casa é 0.3 (30%).
-- O valor final deve ser arredondado para baixo em caso de números fracionários.
 
 # Como testar
+
 1. Acesse [Link do Deploy](https://desafio-tecnico-api-7q98.onrender.com).
 2. Utilize as rotas especificadas para criar participantes, jogos e apostas.
-3. Observe as respostas e resultados conforme as regras de negócio.
-4. Certifique-se de seguir o contrato da API e as instruções fornecidas.
+3. Observe atentamente a estrutura de entrada decada rota.
 
-Boa sorte!
+Boa aposta!!!
 
 
 
